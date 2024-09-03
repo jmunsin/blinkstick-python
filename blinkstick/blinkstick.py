@@ -222,7 +222,7 @@ class BlinkStick(object):
     def _usb_get_string(self, device, index):
         try:
             return usb.util.get_string(device, index, 1033)
-        except usb.USBError:
+        except usb.core.USBError:
             # Could not communicate with BlinkStick device
             # attempt to find it again based on serial
 
@@ -250,7 +250,7 @@ class BlinkStick(object):
         else:
             try:
                 return self.device.ctrl_transfer(bmRequestType, bRequest, wValue, wIndex, data_or_wLength)
-            except usb.USBError:
+            except usb.core.USBError:
                 # Could not communicate with BlinkStick device
                 # attempt to find it again based on serial
 
